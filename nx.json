@@ -7,5 +7,21 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "angular-app": {
+      "tags": []
+    },
+    "angular-app-e2e": {
+      "tags": []
+    },
+    "react-app": {
+      "tags": []
+    },
+    "react-app-e2e": {
+      "tags": []
+    },
+    "ui": {
+      "tags": []
+    }
+  }
 }
