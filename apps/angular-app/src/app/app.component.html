@@ -1,9 +1,19 @@
 <div style="text-align:center">
   <test-greeting [title]="title"></test-greeting>
-  <img
-    width="300"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png"
-  />
+    <mat-tab-group>
+      <mat-tab label="pasta">
+        <ng-template matTabContent>
+          The <em>best</em> pasta
+        </ng-template>
+        <h1>Best pasta restaurants</h1>
+        <p>...</p>
+      </mat-tab>
+      <mat-tab label="sushi">
+        <ng-template matTabContent>
+          <mat-icon>thumb_down</mat-icon> The worst sushi
+        </ng-template>
+        <h1>Terrible sushi restaurants</h1>
+        <p>...</p>
+      </mat-tab>
+    </mat-tab-group>
 </div>
-
-<p>This is an Angular app built with <a href="https://nx.dev">Nx</a>.</p>
