@@ -1,10 +1,12 @@
 <div class="container">
   <form [formGroup]="addForm" class="add-form" (ngSubmit)="addTodo()">
     <div>
-        <mat-form-field>
-          <input matInput placeholder="Enter a to-do" formControlName="todo"/>
-        </mat-form-field>
-    </div> 
+      <mat-card-content>
+          <mat-form-field>
+            <input matInput placeholder="Enter a to-do" formControlName="todo"/>
+          </mat-form-field>
+      </mat-card-content> 
+    </div>
     <div>
       <button
         mat-button
