@@ -1,19 +1,18 @@
 <div style="text-align:center">
-  <test-greeting [title]="title"></test-greeting>
+    <carpediem-sample-header></carpediem-sample-header>
     <mat-tab-group>
-      <mat-tab label="pasta">
+      <mat-tab label="todos">
+
         <ng-template matTabContent>
-          The <em>best</em> pasta
+          <carpediem-sample-todo-add (submitted)="addTodo($event)"></carpediem-sample-todo-add>
+          <carpediem-sample-todo-list [item]="todo"></carpediem-sample-todo-list>
         </ng-template>
-        <h1>Best pasta restaurants</h1>
-        <p>...</p>
+
       </mat-tab>
-      <mat-tab label="sushi">
+      <mat-tab label="history">
         <ng-template matTabContent>
-          <mat-icon>thumb_down</mat-icon> The worst sushi
+          history log
         </ng-template>
-        <h1>Terrible sushi restaurants</h1>
-        <p>...</p>
       </mat-tab>
     </mat-tab-group>
 </div>

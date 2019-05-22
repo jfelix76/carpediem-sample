@@ -1,0 +1,18 @@
+<div class="container">
+  <form [formGroup]="addForm" class="add-form" (ngSubmit)="addTodo()">
+    <div>
+        <mat-form-field>
+          <input matInput placeholder="Enter a to-do" formControlName="todo"/>
+          <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+    </div> 
+    <div>
+      <button
+        mat-button
+        class="search-button"
+        [disabled]="!addForm.get('todo').valid">
+        Add To-do
+      </button>
+    </div>
+  </form>
+</div>
