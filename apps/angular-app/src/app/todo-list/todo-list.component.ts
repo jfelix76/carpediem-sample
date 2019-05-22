@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Todo } from '../interface/todos';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 import { HistoryService } from '../services/history.service';
 import { Constants } from '../constants/constants';
 
@@ -9,15 +9,19 @@ import { Constants } from '../constants/constants';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnChanges {
+export class TodoListComponent implements OnInit, OnChanges {
 
   @Input() item: Todo;
 
   items = new Array<Todo>();
 
-  items$ = new BehaviorSubject({});
+  items$ = new BehaviorSubject([]);
 
   constructor(private historyService: HistoryService) {}
+
+  ngOnInit() {
+    this.items.shift();
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     this.items.push(this.item);
@@ -32,7 +36,7 @@ export class TodoListComponent implements OnChanges {
 
     this.items.splice(element, 1);
 
-    this.historyService.add(Constants.TODO_REMOVED);
+    this.historyService.add(Constants.TODO_REMOVED, item.todo);
   }
 
 }

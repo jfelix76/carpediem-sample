@@ -28,7 +28,7 @@ export class TodoAddComponent implements OnInit {
       date: ['', Validators.required]
     });
 
-    this.historyService.add(Constants.FORM_CREATED);
+    this.historyService.add(Constants.FORM_CREATED, this.todo.value);
   }
 
   addTodo() {
@@ -39,13 +39,17 @@ export class TodoAddComponent implements OnInit {
       this.submitted.emit(this.addForm.value);
     }
 
-    this.historyService.add(Constants.TODO_ADDED);
+    this.historyService.add(Constants.TODO_ADDED, this.todo.value);
 
     this.clearForm();
   }
 
   clearForm() {
     this.addForm.reset();
+  }
+
+  private get todo() {
+    return this.addForm.get('todo');
   }
 
 
