@@ -5,9 +5,7 @@ export interface Item {
 }
 
 export interface Todo extends Item {
-    id: string
     todo: string;
-    date: string;
 }
 
 export interface History extends Todo {

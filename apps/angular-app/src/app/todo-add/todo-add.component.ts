@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Guid } from 'guid-typescript';
+import { HistoryService } from '../services/history.service';
+import { Constants } from '../constants/constants';
 
 @Component({
   selector: 'carpediem-sample-todo-add',
@@ -14,7 +16,8 @@ export class TodoAddComponent implements OnInit {
   @Output() submitted = new EventEmitter();
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private historyService: HistoryService
   ) { }
 
   ngOnInit() {
@@ -25,6 +28,7 @@ export class TodoAddComponent implements OnInit {
       date: ['', Validators.required]
     });
 
+    this.historyService.add(Constants.FORM_CREATED);
   }
 
   addTodo() {
@@ -34,6 +38,8 @@ export class TodoAddComponent implements OnInit {
     if (this.addForm.valid) {
       this.submitted.emit(this.addForm.value);
     }
+
+    this.historyService.add(Constants.TODO_ADDED);
 
     this.clearForm();
   }

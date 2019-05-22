@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Todo } from '../interface/todos';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { HistoryService } from '../services/history.service';
+import { Constants } from '../constants/constants';
 
 @Component({
   selector: 'carpediem-sample-todo-list',
@@ -15,6 +17,8 @@ export class TodoListComponent implements OnChanges {
 
   items$ = new BehaviorSubject({});
 
+  constructor(private historyService: HistoryService) {}
+
   ngOnChanges(changes: SimpleChanges) {
     this.items.push(this.item);
     this.items$.next(this.items);
@@ -27,6 +31,8 @@ export class TodoListComponent implements OnChanges {
     console.log('what is removed', element)
 
     this.items.splice(element, 1);
+
+    this.historyService.add(Constants.TODO_REMOVED);
   }
 
 }

@@ -8,9 +8,11 @@ import { HeaderComponent } from './header/header.component';
 import { TodoAddComponent } from './todo-add/todo-add.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HistoryService } from './services/history.service';
+import { LogListComponent } from './log-list/log-list.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, TodoAddComponent, TodoListComponent],
+  declarations: [AppComponent, HeaderComponent, TodoAddComponent, TodoListComponent, LogListComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -20,7 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    HistoryService
+  ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
